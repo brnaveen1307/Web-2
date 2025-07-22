@@ -1,1 +1,1 @@
-This is a Zerodha Web Application.
+This is a Zerodha Web.
