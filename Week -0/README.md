@@ -1,1 +1,1 @@
-This is a Zerodha Web Application developed using html and css.
+This is the landing page of Zerodha developed using html and css.
