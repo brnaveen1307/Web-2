@@ -1,1 +1,1 @@
-This is the landing page of Zerodha developed using html and css.
+This is the clone of the landing page of Zerodha developed using html and css.
