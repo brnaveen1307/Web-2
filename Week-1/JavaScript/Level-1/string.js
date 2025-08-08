@@ -32,7 +32,7 @@ function getSlice(str, start, end)
   console.log("Original String:", str);
   console.log("After slice:", str.slice(start, end));
 }
-getSlice("Hello World", 0, 5);
+getSlice("Hello World", 2, 5);
 
 // substring
 function getSubstring(str, start, end)
@@ -40,7 +40,7 @@ function getSubstring(str, start, end)
   console.log("Original String:", str);
   console.log("After substring:", str.substring(start, end));
 }
-getSubstring("Hello World", 0, 5);
+getSubstring("Hello World", 2, 5);
 
 // replace
 function replaceString(str, target, replacement) 
@@ -65,4 +65,22 @@ function toUpperCase(str)
   console.log("After toUpperCase:", str.toUpperCase());
 }
 
-console.log(toUpperCase("Hello World"));
+toUpperCase("Hello World");
+
+//trim
+function trimString(str)
+{
+  console.log("Original String : " +str);
+  console.log("After trim : " + str.trim());
+}
+
+trimString("                  Hello World!  ");
+
+//toLowerCase
+function toLower(str)
+{
+  console.log("Original String : " + str);
+  console.log("After toLowerCase : " + str.toLowerCase());
+}
+
+toLower("NAVEEN");
