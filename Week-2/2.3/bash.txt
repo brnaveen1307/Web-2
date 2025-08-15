@@ -1,0 +1,16 @@
+Bash and Terminal Commands
+
+1 pwd - Prints the current Working Directory
+2 cd - Allows Changing the Directory to the forward
+3 cd .. - Allows Changing the Directory to the backward
+4 mkdir - Creates a folder
+5 touch - Creates a file of any type
+6 cat - Displays the content of a file
+7 vi - Allows editing a file (To edit - insert , To save the edited file - escape + : + wq)
+8 mv - Allows moving folers and files from one place to the other
+9 cp - Allows copying folers and files from one place to the other
+10 clear - Clears all the commands in the Command Prompt or the Terminal
+11 npm - Stands for Node Package Manager allows managing packages
+12 git - Used for the git commands
+13 ls - Lists all the files or folders in the current Directory
+14 node - Used to run a js file
