@@ -50,10 +50,10 @@ app.put("/", function(req, res){
 
 app.delete("/", function(req, res){
 if(!isThereAtleastOneUnhealthyKidney()){
-        const newKidnweys = {};
+        const newKidneys = {};
         for(let i = 0; i < users[0].kidneys.length; i++){
             if(users[0].kidneys[i].healthy){
-                newKidnweys.push({
+                newKidneys.push({
                     healthy: true
                 })
             }
