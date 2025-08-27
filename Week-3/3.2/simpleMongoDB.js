@@ -1,10 +1,10 @@
-const expree = require('express')
+const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
 app.use(express.json())
 
-mongoose.connect("Your mongoDB url")
+mongoose.connect("mongodb+srv://mrnattyboy05:k4SyKgXEmGojLpkG@cluster0.xxxxx.mongodb.net/mydatabase")
 
 const User = mongoose.model("User", {
     name: String,
