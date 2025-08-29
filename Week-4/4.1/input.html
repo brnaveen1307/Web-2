@@ -7,11 +7,23 @@
 </head>
 
 <script>
+    //debouncing and throtling
+    let timeout;
+    function debounceSolution(){
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function(){
+            solution()
+        }, 100)
+
+    }
+
     async function solution(){
         const a = document.getElementById("firstNumber").value;
         const b = document.getElementById("secondNumber").value;
         
-        const response = await fetch("http://localhost:3000/sum?a=" + a + "&b=" + b);
+        const response = await fetch("https://sum-server.100xdecs.com/sum?a=" + a + "&b=" + b);
         const ans = await response.text();
         document.getElementById("finalSum").innerHTML = ans;
         
@@ -19,9 +31,8 @@
 </script>
 
 <body>
-    <input id="firstNumber" type="text" placeholder="First number"></input> <br></br>
-    <input id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
-    <button onclick="solution()">Calculate Sum</button> <br></br>
+    <input oninput="solution()" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+    <input oninput="solution()" id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
 
     <div id="finalSum"></div>
 </body>

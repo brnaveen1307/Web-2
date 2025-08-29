@@ -9,4 +9,6 @@ app.get("/sum", function(req, res){
     res.send(sum.toString())
 })
 
-app.listen(3000)
+app.listen(3000, function(){
+    console.log("The server is running in the 3000...")
+})

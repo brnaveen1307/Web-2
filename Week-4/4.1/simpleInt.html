@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    async function smpInt(){
+        const p = document.getElementById("principal").value;
+        const r = document.getElementById("rate").value;
+        const t = document.getElementById("time").value;
+        
+        const response = await fetch("https://sum-server.100xdecs.com/sum?p=" + p + "r=" + r + "&t=" + t);
+        const ans = await response.text();
+        document.getElementById("fresult").innerHTML = ans;
+        
+    }        
+</script>
+
+<body>
+    <input id="principal" type="text" placeholder="Principal"></input> <br></br>
+    <input id="rate" type="text" placeholder="Rate of Interest"></input> <br></br>
+    <input id="time" type="text" placeholder="Time"></input> <br></br>
+    <button onclick="smpInt()">Calculate Simple Interest</button> <br></br>
+
+    <div id="result"></div>
+</body>
+</html>
