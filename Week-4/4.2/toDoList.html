@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="title" type="text" placeholder="Todo title"></input><br></br>
+    <input id="description" type="text" placeholder="Todo description"></input><br></br>
+    
+    <div id="container"></div>
+
+    <script>
+    function createChild(title, description, id){
+        const child = document.createElement("div");
+
+        const firstChild = document.createElement("div");
+        firstChild.innerHTML = title;
+
+        const secondChild = document.createElement("div");
+        secondChild.innerHTML = description;
+
+        const thirdChild = document.createElement("button");
+        thirdChild.innerHTML = "Mark As Done";
+
+        thirdChild.setAttribute("onclick", `markAsDone(${id})`);
+
+        child.appendChild(firstChild);
+        child.appendChild(secondChild);
+        child.appendChild(thirdChild);
+
+        child.setAttribute("id", id);
+
+        return child;
+    }
+
+    function updateDomAccToState(state){
+        const parent = document.getElementById("container");
+        parent.innerHTML = "";
+
+        for(let i = 0; i < state.length; i++){
+            const child = createChild(state[i].title, state[i].description, state[i].id);
+            parent.appendChild(child);
+        }
+    }
+
+    updateDomAccToState([{
+        title: "Go to Gym",
+        description : "From 5-7",
+        id: 1
+    }, {
+        title: "Go to Library",
+        description : "From 9-10",
+        id: 2
+    } ])
+
+    // window.setInterval(async function(){
+    //     const res = await fetch("URL")
+    //     const json = await res.json()
+    //     updateDomAccToState(json.todos)
+    // }, 5000)
+
+    </script>
+</body>
+</html>
