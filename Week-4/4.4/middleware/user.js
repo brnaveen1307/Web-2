@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require("../config")
 
 
-function adminMiddleware(req, res, next){
+function userMiddleware(req, res, next){
     const token = req.headers.authorization;
 
     const words = token.split(" ");
@@ -18,4 +18,4 @@ function adminMiddleware(req, res, next){
     }
 }
 
-module.exports = adminMiddleware;
+module.exports = userMiddleware;
