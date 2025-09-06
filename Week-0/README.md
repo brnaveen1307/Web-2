@@ -1,1 +1,1 @@
-This is the clone of the landing page of Zerodha a Stock Exchange Website developed using HTML and CSS.
+This is the clone of the landing page of Zerodha developed using HTML and CSS.
