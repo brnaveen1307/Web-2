@@ -2,8 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors")
 
+app.use(express.json());
+app.use(cors({
+    origin: "*"
+}))
+
 app.get("/server", function(req, res){
-    const todos = [{
+    const todos = {todos : [{
         id: 1,
         title: "Python",
         description: "Learn online"
@@ -11,7 +16,7 @@ app.get("/server", function(req, res){
         id: 2,
         title: "JavaScript",
         description: "Learn from scratch"
-    }]
+    }]}
 
     res.json(todos)
 })

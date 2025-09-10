@@ -8,7 +8,7 @@ function App() {
 
   useEffect(function(){
     setInterval(function(){
-      fetch("https://sum-server.100xdevs.com/todos")
+      fetch("http://localhost:3000/server")
       .then(async function(res){
         const json = await res.json();
         setTodos(json.todos);
@@ -19,12 +19,12 @@ function App() {
 
   return (
     <>
-      {todos.map(todo => <Todo key = {todo.id} title = {todo.title} description = {todo.decription} /> )}
+      {Todo.map(todo => <Todo key = {todo.id} title = {todo.title} description = {todo.description} /> )}
     </>
   )
 }
 
-function Todo({titlle, description}){
+function Todo({title, description}){
   return <div>
     <h1>
       {title}
