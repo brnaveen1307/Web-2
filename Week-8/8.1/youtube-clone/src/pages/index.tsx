@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import {VideoCard} from "../components/VideoCard";
+import {VideoGrid} from "../components/VideoGrid";
+import {AppBar} from "../components/AppBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,14 +17,8 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div>
-      <VideoCard 
-        image={"photo.jpg"}
-        thumbImage={"thumb.jpg"}
-        title={"Idli Kottu | Official Trailer (Telugu) "} 
-        author={"Dhanush"}
-        views = {"46M views"} 
-        timestamp = {"2 weeks ago"}>
-      </VideoCard>
+      <AppBar />
+      <VideoGrid />
     </div> 
   );
 }
