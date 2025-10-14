@@ -1,7 +1,10 @@
 import { Client } from 'pg'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const client = new Client({
-    connectionString: 'postgresql://neondb_owner:npg_Kg7cyDb4aHvV@ep-autumn-waterfall-adz97phh-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+    connectionString: process.env.URI
 })
 
 async function createUsersTable(){
