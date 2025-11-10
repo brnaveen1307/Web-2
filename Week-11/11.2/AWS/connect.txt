@@ -1,0 +1,7 @@
+ssh -i nameofthefile(.pem) ubuntu@ipAddress
+
+chmod 700 nameofthefile(.pem) 
+
+file(key pair)
+
+install node.js through nvm
