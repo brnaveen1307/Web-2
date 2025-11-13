@@ -1,3 +1,4 @@
+//Connecting Backends to AWS (EC2) - Elastic Compute
 ssh -i nameofthefile(.pem) ubuntu@ipAddress
 
 chmod 700 nameofthefile(.pem) 
