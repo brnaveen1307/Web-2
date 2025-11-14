@@ -1,0 +1,3 @@
+To have access just like psql do from docker:
+
+docker exec -it container_id /bin/bash
