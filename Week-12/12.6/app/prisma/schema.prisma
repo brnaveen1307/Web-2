@@ -1,0 +1,19 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "Connection Pool URL"
+  directUrl      = "PostgresUrl"
+}
+
+model Log {
+  id  Int @id @default(autoincrement())
+  level String
+  message String
+  meta Json
+}
+
