@@ -1,0 +1,42 @@
+import { Client } from 'pg';
+async function insertUserAndAddress(username, email, password, city, country, street, pincode) {
+    const client = new Client({
+        host: 'localhost',
+        port: 5432,
+        database: 'postgres',
+        user: 'postgres',
+        password: 'password'
+    });
+    try {
+        await client.connect();
+        // Start Transaction
+        await client.query('BEGIN');
+        // Insert user
+        const insertUserText = `
+            INSERT INTO users (username, email, password)
+            VALUES ($1, $2, $3)
+            RETURNING id;
+        `;
+        const userRes = await client.query(insertUserText, [username, email, password]);
+        const userId = userRes.rows[0].id;
+        // Insert address using the returned uder ID
+        const insertAddressText = `
+            INSERT INTO addresses (user_id, city, country, street, pincode)
+            VALUES ($1, $2, $3, $4, $5);
+        `;
+        await client.query(insertAddressText, [userId, city, country, street, pincode]);
+        // Commit transaction
+        await client.query('COMMIT');
+        console.log("User and address inserted successfully");
+    }
+    catch (err) {
+        await client.query('ROLLBACK');
+        console.log("Error during transaction, rolled back. ", err);
+        throw err;
+    }
+    finally {
+        await client.end();
+    }
+}
+insertUserAndAddress('Dhrithi', 'dhrithi@gmail.com', 'dhrithi123', 'India', 'Bangalore', 'Neighbours Colony', '200054');
+//# sourceMappingURL=index.js.map
