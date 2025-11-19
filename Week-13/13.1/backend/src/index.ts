@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { Hono } from 'hono'
-import { decode, sign, verify } from 'hono/jwt'
+import { sign, verify } from 'hono/jwt'
 
 const app = new Hono<{
     Bindings: {
@@ -9,6 +9,25 @@ const app = new Hono<{
         JWT_SECRET: string
     }
 }>()
+
+app.use('/api/v1/blog/*', async (c, next) => {
+    const header = c.req.header("authorization") || "";
+    const token = header.split(" ")[1]
+    try {
+        const response = await verify(token, c.env.JWT_SECRET)
+        if (response && response.id) {
+            await next()
+            return
+        }
+    } catch (e) {
+        // fall through to unauthorized
+    }
+
+    c.status(403)
+    return c.json({
+        Error: "Unauthorized"
+    })
+})
 
 app.post('/api/v1/signup', async (c) => {
     const prisma = new PrismaClient({
@@ -37,24 +56,22 @@ app.post('/api/v1/signin', async (c) => {
     }).$extends(withAccelerate())
     
     const body = await c.req.json()
-
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
         where: {
             email: body.email,
-            password: body.password
         }
     })
 
-    if(!user){
+    if (!user || user.password !== body.password) {
         c.status(403)
         return c.json({
-            Error: "User not found"
+            Error: "Invalid credentials"
         })
     }
 
     const token = await sign({ id: user.id }, c.env.JWT_SECRET)
 
-    return c.json({ jwt })
+    return c.json({ jwt: token })
 })
 
 app.post('/api/v1/blog', (c) => {
